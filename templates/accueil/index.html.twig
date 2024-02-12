@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact Manager{% endblock %}
+
+{% block body %}
+    <h1 class="text-center pt-5">Welcome to <span class="bg-danger">Contact Manager</h1>
+   <ul>
+   {%for name in contactList%}
+    <li>{{name.firstName}} {{name.firstName|upper}}</li>
+   {% endfor %}
+   </ul>
+{% endblock %}

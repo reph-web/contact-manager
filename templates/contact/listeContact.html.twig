@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact Manager{% endblock %}
+
+{% block body %}
+<h1 class="text-center pt-5 pd-5">Contact List :</h1>
+<div class="row row-cols-4 ">
+{% for c in contactList%}
+  <div class="col">
+  <div id="card" class="card mh-100 mb-5 justify-content-around border-3 border-{{c.sex ? "warning" : "success"}}" style="width: 15rem;">
+  <img class="card-img-top avatar" src={{c.avatar}} alt="{{c.firstName}} {{c.name}}">
+  <div class="card-body">
+    <h5 class="card-title">{{c.name|upper}} {{c.firstName}}</h5>
+    <ul class="justify-content-evenly">
+        <li class=>Sexe : <span class="bg-{{c.sex ? "warning" : "success"}}">{{c.sex ? "Femme" : "Homme" }}</span></li>
+        <li>Adresse : {{c.street}} {{c.cp}} {{c.city}}</li>
+        <li>Email : {{c.mail}}
+    </ul>
+  </div>
+</div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}
