@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     /**
-     * @Route("/contact", name="app_contact")
+     * @Route("/contacts", name="contacts")
      */
     public function index(ContactRepository $repo): Response
     {
@@ -22,4 +22,17 @@ class ContactController extends AbstractController
             'contactList' => $contacts
         ]);
     }
+
+    /**
+     * @Route("/contact/{id}", name="ficheContact", methods={"GET"})
+     */
+    public function ficheContact($id, ContactRepository $repo): Response
+    {
+        $contact = $repo->find($id);
+        return $this->render('contact/listeContact.html.twig', [
+            'controller_name' => 'ContactController',
+            'contactList' => [$contact]
+        ]);
+    }
+
 }

@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AccueilController extends AbstractController
 {
     /**
-     * @Route("/", name="app_accueil"  methods="{GET}")
+     * @Route("/", name="app_accueil", methods={"GET"})
      */
     public function index(ContactRepository $repo): Response
     {

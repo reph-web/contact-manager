@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Contact;
+use App\Entity\Categorie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -13,10 +14,26 @@ class AppFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
+        $prive = new Categorie();
+        $prive->setImage('https://picsum.photos/id/342/200/300')
+            ->setLibelle('Privé')
+            ->setDescription('Catégorie pour les contacts du privé');
+        $manager->persist($prive);
+
+        $sport = new Categorie();
+        $sport->setImage('https://picsum.photos/id/73/200/300')
+            ->setLibelle('Sport')
+            ->setDescription('Catégorie pour les contacts du sport');
+        $manager->persist($sport);
+
+        $profesionnel = new Categorie();
+        $profesionnel->setImage('https://picsum.photos/id/5/200/300')
+            ->setLibelle('Professionnel')
+            ->setDescription('Catégorie pour les contacts du professionnel');
+        $manager->persist($profesionnel);
 
         $genders = ["male", "female"];
         $faker = Factory::create("fr_FR");
-
         for($i=0; $i<100; $i++){
             $sexe = mt_rand(0,1);
             if($sexe){
