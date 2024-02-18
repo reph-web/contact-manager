@@ -34,5 +34,4 @@ class ContactController extends AbstractController
             'contactList' => [$contact]
         ]);
     }
-
 }

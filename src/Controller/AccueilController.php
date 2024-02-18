@@ -14,7 +14,7 @@ class AccueilController extends AbstractController
      */
     public function index(ContactRepository $repo): Response
     {
-        
+    
         return $this->render('accueil/index.html.twig', [
             'contactList' => $repo->findAll()
         ]);

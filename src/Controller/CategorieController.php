@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\CategorieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CategorieController extends AbstractController
@@ -12,22 +13,23 @@ class CategorieController extends AbstractController
     /**
      * @Route("/categories", name="categories")
      */
-    public function index(CategorieRepository $repo): Response
-    {
-        return $this->render('categorie/index.html.twig', [
+    public function listeCategorie(CategorieRepository $repo): Response
+    {   
+        return $this->render('categorie/listeCategorie.html.twig', [
             'controller_name' => 'CategorieController',
             'catList' => $repo->findAll()
         ]);
     }
 
     /**
-     * @Route("/categorie/{id}", name="detailCategorie", methods={"GET"})
+     * @Route("/categorie/{id}/{prevCont?}", name="detailCategorie", methods={"GET"})
      */
-    public function detailCategorie($id, CategorieRepository $repo): Response
+    public function detailCategorie($id, $prevCont, CategorieRepository $repo, Request $request): Response
     {
-        return $this->render('categorie/index.html.twig', [
+        return $this->render('categorie/listeCategorie.html.twig', [
             'controller_name' => 'CategorieController',
-            'catList' => [$repo->find($id)]
+            'catList' => [$repo->find($id)],
+            'prevCont' => $prevCont
         ]);
     }
 

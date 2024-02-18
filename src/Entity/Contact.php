@@ -57,6 +57,11 @@ class Contact
      */
     private $sex;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="contacts")
+     */
+    private $categorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +159,18 @@ class Contact
     public function setSex(int $sex): self
     {
         $this->sex = $sex;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

@@ -3,7 +3,7 @@
 {% block title %}Contact Manager{% endblock %}
 
 {% block body %}
-<h1 class="text-center pt-5 pd-5 text-light">Categorie List :</h1>
+<h1 class="text-center pt-5 pd-5">Categorie List :</h1>
 <div class="row row-cols-4 row-custom gx-0 justify-content-center">
 {% for c in catList %}
     <div class="fiche col-sm-12 col-lg-3 rounded-top-5 me-5 gap-2" style="width: 15rem;">
@@ -13,7 +13,11 @@
                 <h3 class="card-title p-3">{{c.libelle|upper}}</h5>
                 {% if catList|length is same as(1) %}
                     <p>{{c.description}}</p>
-                    <a href="{{path('categories')}}" class="btn btn-danger">Retour</a>
+                    {% if prevCont %}
+                        <a href="{{path('ficheContact', {'id':prevCont})}}" class="btn btn-danger">Retour</a>
+                        {% else %}
+                        <a href="{{path('categories')}}" class="btn btn-danger">Retour</a>
+                    {% endif %}
                 {% endif %}
                 {% if catList|length > 1 %}
                 <a href="{{path('detailCategorie', {'id':c.id})}}" class="btn btn-danger">Détail</a>
