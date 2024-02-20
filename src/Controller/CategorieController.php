@@ -24,7 +24,7 @@ class CategorieController extends AbstractController
     /**
      * @Route("/categorie/{id}/{prevCont?}", name="detailCategorie", methods={"GET"})
      */
-    public function detailCategorie($id, $prevCont, CategorieRepository $repo, Request $request): Response
+    public function detailCategorie($id, $prevCont, CategorieRepository $repo): Response
     {
         return $this->render('categorie/listeCategorie.html.twig', [
             'controller_name' => 'CategorieController',
