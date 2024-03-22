@@ -3,7 +3,7 @@
 {% block title %}Contact Manager{% endblock %}
 
 {% block body %}
-<h1 class="text-center pt-5 pd-5">Contact List :</h1>
+<h1 class="text-center pt-5 pd-5">Liste des contacts :</h1>
 <div class="row row-cols-4 justify-content-between gx-0">
 {% for c in contactList %}
   <div class="col-sm-12 col-lg-3 mb-5 border rounded-top-5 border-3 border-{{c.sex ? "warning" : "success"}}" style="width: 15rem;">
